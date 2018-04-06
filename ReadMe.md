@@ -21,10 +21,7 @@ sty@dl-server01:~/styfiles$ sort_file.sh
 ```
 
 **为什么不用其他的`ls`、`du`呢？**
-这里为你做了一个对比
-
-
-
+这里为你做了一个[详细对比](https://blog.csdn.net/sty945/article/details/79830915)
 
 
 
