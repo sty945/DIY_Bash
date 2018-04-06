@@ -1,3 +1,5 @@
+[![MIT](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/sty945/DIY_Bash/blob/master/LICENSE)
+
 # 目的
 通过自己编写的脚本实现Linux系统不自带的功能，来提高工作效率。
 
