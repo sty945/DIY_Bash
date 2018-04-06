@@ -2,7 +2,7 @@
 
 # description: Sort the files in your directory by size, and Display their storage size directly
 # user: sty
-# blog: https://blog.csdn.net/sty945
+# blog: https://blog.csdn.net/sty945/article/details/79830915
 # github: https://github.com/sty945/DIY_Bash
 
 
