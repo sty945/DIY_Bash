@@ -1,14 +1,32 @@
-
-[toc]
-
 # 目的
-通过自己编写的脚本实现Linux系统不自带的功能，来提高工作效率
+通过自己编写的脚本实现Linux系统不自带的功能，来提高工作效率。
 
+欢迎大家fork一起来完善更多的功能，如果觉得还不错的欢迎点个star.
 
 # 具体功能介绍
 **sort_file.sh**
 
 linux系统下以存储从大到小并以K，M，G为单位的方式查看当前目录下的文件信息
+
+**结果展示如下：**
+
+```
+sty@dl-server01:~/styfiles$ sort_file.sh
+2.60G            fastAI
+14.93M           pythonFile
+9.89M            teamviewer_amd64.deb
+24k              styNet
+4k               demo.sh
+
+```
+
+**为什么不用其他的`ls`、`du`呢？**
+这里为你做了一个对比
+
+
+
+
+
 
 # 在linux任意位置都可以使用这个目录下的脚本
 
