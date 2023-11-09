@@ -27,16 +27,15 @@ gf ()
 gd ()
 {
         if [[ -n "$1" ]]; then
-                app_gpu=$(gpushow $1)
-                app_info=$(gpushow $1 | awk -F',' '{print $1}' | xargs -I{} sh -c 'ps -ef | grep {}' | grep -v grep | awk -F 'pts' '{print $2}')
+                app_gpu=$(gs $1)
+                app_info=$(gs $1 | awk -F',' '{print $1}' | xargs -I{} sh -c 'ps -ef | grep {}' | grep -v grep | awk -F 'pts' '{print $2}')
                 paste <(echo "$app_gpu") <(echo "$app_info")
         else
-                app_gpu=$(gpushow)
-                app_info=$(gpushow | awk -F',' '{print $1}' | xargs -I{} sh -c 'ps -ef | grep {}' | grep -v grep | awk -F 'pts' '{print $2}')
+                app_gpu=$(gs)
+                app_info=$(gs | awk -F',' '{print $1}' | xargs -I{} sh -c 'ps -ef | grep {}' | grep -v grep | awk -F 'pts' '{print $2}')
                 paste <(echo "$app_gpu") <(echo "$app_info")
         fi        
 }
-
 # alias some shell
 ip=`hostname -I | awk '{print $1}'`
 alias al='axel -n 10 -o'
