@@ -1,0 +1,50 @@
+getscp ()
+{
+        echo $USER@$(hostname -I | awk '{print $1}'):$(readlink -f $1)
+}
+
+# gpu show
+gs ()
+{
+        if [[ -n "$1" ]]; then
+                nvidia-smi --id=$1 --query-compute-apps=pid,process_name,used_gpu_memory --format=csv,noheader
+        else
+                nvidia-smi --query-compute-apps=pid,process_name,used_gpu_memory --format=csv,noheader
+        fi
+}
+
+# gpu free
+gf ()
+{
+        if [[ -n "$1" ]]; then
+                nvidia-smi --id=$1 --query-gpu=memory.free --format=csv,noheader,nounits
+        else
+                nvidia-smi --query-gpu=index,memory.free --format=csv,noheader,nounits
+        fi
+}
+
+# gpu detail
+gd ()
+{
+        if [[ -n "$1" ]]; then
+                app_gpu=$(gpushow $1)
+                app_info=$(gpushow $1 | awk -F',' '{print $1}' | xargs -I{} sh -c 'ps -ef | grep {}' | grep -v grep | awk -F 'pts' '{print $2}')
+                paste <(echo "$app_gpu") <(echo "$app_info")
+        else
+                app_gpu=$(gpushow)
+                app_info=$(gpushow | awk -F',' '{print $1}' | xargs -I{} sh -c 'ps -ef | grep {}' | grep -v grep | awk -F 'pts' '{print $2}')
+                paste <(echo "$app_gpu") <(echo "$app_info")
+        fi        
+}
+
+# alias some shell
+ip=`hostname -I | awk '{print $1}'`
+alias al='axel -n 10 -o'
+alias topsty='top -u sutaoyu'
+alias jynt='jupyter notebook --no-browser --port 8080 --ip='${ip}
+alias gm='git push origin master'
+alias sp='source ~/.bash_profile'
+alias sshgen='ssh-keygen -t rsa -C "sutaoyu@yeah.net"'
+alias conda_set_0='conda config --set auto_activate_base false'
+alias scuda='cat /usr/local/cuda/version.txt'
+alias nv="nvidia-smi | grep python | awk '{print $5}' | xargs ps -ef grep"
